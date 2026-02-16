@@ -5,6 +5,20 @@
 # Download from: https://graphviz.org/download/
 # Windows: Install to C:\Program Files\Graphviz
 
+# macOS (Homebrew) troubleshooting and install notes:
+# - Install Graphviz and pkg-config via Homebrew:
+#     brew install graphviz pkg-config
+# - If pip build fails with missing headers, export Homebrew include/lib and pkg-config paths:
+#     export CPPFLAGS="-I/opt/homebrew/include"
+#     export LDFLAGS="-L/opt/homebrew/lib"
+#     export PKG_CONFIG_PATH="/opt/homebrew/opt/graphviz/lib/pkgconfig:/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH"
+#   (Use /usr/local instead of /opt/homebrew on Intel Macs.)
+# - Then activate your virtualenv and install/upgrade packaging tools before installing pygraphviz:
+#     source <venv>/bin/activate
+#     python -m pip install --upgrade pip setuptools wheel
+#     python -m pip install pygraphviz
+
+
 # Core diagram generation library
 diagrams==0.24.4
 
@@ -24,6 +38,9 @@ graphviz2drawio==1.1.0
 # Additional dependencies (installed automatically with above packages)
 puremagic==1.30
 svg.path==7.0
+
+# Optional: convert DOT to Draw.io (install in venv)
+graphviz2drawio==1.1.0
 Jinja2==3.1.6
 MarkupSafe==3.0.3
 pre-commit==4.4.0
